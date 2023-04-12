@@ -9,3 +9,8 @@ Today we are using a Database from the IBGE, or the institute of Brazilian Stati
 If you are a native or speaks Portuguese, you can read all of our analysis and reports made for our Class in the link below:
 
 https://drive.google.com/drive/folders/1d0HkW8VxqI7RjyZZ8DPQQnzYAAPJo47u?usp=sharing
+
+If by any chance you are our Professor Patricia, our entire project folder is on the link below:
+https://drive.google.com/drive/folders/1AlSqHVJjl-cYcruteZHdR2lG2sYhjQhI?usp=sharing
+
+Thank you for your time!
