@@ -1,4 +1,4 @@
-# datamining
+# Datamining Project - IBMEC
 
 Hello readers! 
 
