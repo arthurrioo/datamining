@@ -1,21 +1,21 @@
 import pandas as pd 
 
-arquivo=pd.read_csv("EXP_2022.csv",encoding='utf-8',sep=';')
+arquivo=pd.read_csv("EXP_20_22.csv",encoding='utf-8',sep=';')
 #%%
 #encoding='utf-8'  encoding='ISO-8859-1'
 arquivo = arquivo.drop(arquivo[arquivo['CO_NCM']!=27090010].index)
 arquivo.info()
 
 #%%
-del arquivo['SG_UF_NCM']
 del arquivo['CO_VIA']
 del arquivo['CO_URF']
 del arquivo['CO_UNID']    
 #%%
 arquivo=arquivo.rename(columns={'CO_ANO':'ANO',
+                                'SG_UF_NCM':"UF_ORIGEM",
                               'CO_MES':'MES',
                               'CO_NCM':'NCM',
-                              'CO_PAIS':'PAIS_ORIGEM',
+                              'CO_PAIS':'PAIS_DESTINO',
                               'QT_ESTAT':'QUANTIDADE',
                               'KG_LIQUIDO':'KG_LIQUIDO',
                               'VL_FOB':'VALOR_USD'}) 
@@ -35,9 +35,7 @@ def cabecalho(titulo):
     print("----------------------------------------------------")
     print(titulo)
     print("----------------------------------------------------")
-    print()
-#%%    
-y = x.VALOR_USD.div(10^6).round(decimals=2)
+    print()    
 
 #%%
 valor_mes = pd.DataFrame(x.groupby(x["MES"])['VALOR_USD'].sum())
@@ -54,15 +52,20 @@ valor_summary['Maximo valor vendido em cada Mes'] = maximo_mes
 
 print(valor_summary)
 #%%
-tabdinamica=x.pivot_table(values=['VALOR_USD'],index=['MES','PAIS_ORIGEM'],aggfunc='mean')
+tabdinamica=x.pivot_table(values=['VALOR_USD'],index=['MES','PAIS_DESTINO'],aggfunc='mean')
 tabdinamica=tabdinamica.round(decimals=2)
-print(tabdinamica) 
+print(tabdinamica)  
+#%%
+
+tabdinamica2=x.pivot_table(values=['VALOR_USD'],index=['UF_ORIGEM','MES'],aggfunc='mean')
+tabdinamica2=tabdinamica2.round(decimals=2)
+print(tabdinamica2) 
 
 #f"Tabela de valores por mês:{valor_summary:, .2f}"
 #%%
-import matplotlib.pyplot as plt
-plt.title(label="Valores em função dos meses")
-plt.plot(valor_summary['Total por mês'])
-plt.legend(["Soma Mensal"])
-
-
+grafico = pd.DataFrame()
+grafico['Minimo valor vendido em cada Mes'] = minimo_mes
+grafico['Maximo valor vendido em cada Mes'] = maximo_mes
+valor_mes.plot()
+grafico.plot.density()
+grafico.plot()
