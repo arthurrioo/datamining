@@ -8,11 +8,10 @@ from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
 from sklearn.metrics import r2_score,mean_absolute_error, mean_squared_error
 
-arquivo = pd.read_csv("/Users/arthurrio/Desktop/Projeto/Modules/Files/arquivo_dummy.csv",delimiter=";")
-prod = pd.read_csv("/Users/arthurrio/Desktop/Projeto/Modules/Files/prod_dummy.csv",delimiter=";")
-export = pd.read_csv("/Users/arthurrio/Desktop/Projeto/Modules/Files/export.csv",delimiter=",")
+arquivo = pd.read_csv("https://github.com/arthurrioo/datamining/raw/main/Files/arquivo_dummy.csv",delimiter=";")
+prod = pd.read_csv("https://github.com/arthurrioo/datamining/raw/main/Files/prod_dummy.csv",delimiter=";")
+export = pd.read_csv("https://github.com/arthurrioo/datamining/raw/main/Files/export.csv",delimiter=",")
 
-#%%
 arquivo['Valor_Barril']=arquivo["VALOR_USD"]/arquivo['QUANTIDADE']
 arquivo['Valor/KG']=arquivo["VALOR_USD"]/arquivo['KG_LIQUIDO']
 
